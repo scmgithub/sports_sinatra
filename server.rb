@@ -31,3 +31,14 @@ post '/athletes' do
 	db.execute("insert into athletes (name, sport) values (?, ?);", params[:new_athlete], params[:new_sport])
 	redirect('/athletes')
 end
+
+put '/athletes/:id' do
+	id = params[:id].to_i
+	edit_name = params[:edit_name]
+	edit_sport = params[:edit_sport]
+	db.execute("update athletes set name = ?, sport = ? where id = ?;", edit_name, edit_sport, id)
+	redirect("/athletes")
+end
+
+
+

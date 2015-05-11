@@ -8,6 +8,12 @@
 	<h1><%= athlete[1] %></h1>
 	<p><%= athlete[1] %> plays <%= athlete[2] %> </p>
 	<br>
+	<form action="/athletes/<%= athlete[0] %>" method="POST">
+		<input type="hidden" name="_method" value="PUT" />
+		<input type="text" name="edit_name" value="<%= athlete[1] %>"><br><br>
+		<input type="text" name="edit_sport" value="<%= athlete[2] %>"><br><br>
+		<button>Update Hall-of-Famer</button>
+	</form><br>
 	<small><a href='/'>Go back to Hall of Fame</a></small>
 </body>
 </html>
