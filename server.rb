@@ -49,7 +49,6 @@ end
 
 get '/api/athletes' do
 	key = params[:api_key]
-puts api_users
 	if !key 
 		erb :go_away
 	else
@@ -71,7 +70,6 @@ end
 get '/api/athletes/:id' do
 	key = params[:api_key]
 	id = params[:id].to_i
-puts api_users
 	if !key 
 		erb :go_away
 	else

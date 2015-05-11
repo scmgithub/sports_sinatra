@@ -11,11 +11,17 @@
 	button {
 		background-color: yellow;
 		border-radius: 8px;
+		color: green;
+	}
+	img {
+		float: right;
 	}
 	</style>
 </head>
 <body>
 	<h1>Athletes of the World</h1>
+	<img src="http://98a4980578083abe0fc6-26cdb33025b4deaf9c0a6e9a3953d227.r43.cf2.rackcdn.com/cbfd384e60225f3cbd9e6a6cedf7109f.jpg">
+	
 	<% if (athletes) %>
 		<ol>
 			<% athletes.each { |athlete| %> <li><a href="athletes/<%= athlete[0] %>"><%= athlete[1] %></a></li> <% } %>
@@ -25,7 +31,7 @@
 		<label>New Athlete:</label><br>
 		<input type="text" name="new_athlete" placeholder="name" required><br>
 		<input type="text" name="new_sport" placeholder="sport" required><br><br>
-		<button style="color: green">Add a Hall-of-Famer</button>
+		<button>Add a Hall-of-Famer</button>
 	</form>
 </body>
 </html>
