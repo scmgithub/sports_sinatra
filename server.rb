@@ -46,6 +46,12 @@ delete '/athletes/:id' do
 	redirect('/athletes')
 end
 
+get '/api/athletes' do
+	athletes_list = db.execute("select * from athletes;")
+	content_type :json
+	athletes_list.to_json
+end
+
 
 
 
