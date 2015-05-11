@@ -3,6 +3,7 @@ require 'sqlite3'
 require 'json'
 
 db = SQLite3::Database.new "sports.db"
+api_users={}
 
 rows = db.execute <<-SQL
 	create table if not exists athletes (
@@ -47,9 +48,24 @@ delete '/athletes/:id' do
 end
 
 get '/api/athletes' do
-	athletes_list = db.execute("select * from athletes;")
-	content_type :json
-	athletes_list.to_json
+	key = params[:api_key]
+
+	if !key 
+		erb :go_away
+	else
+		if api_users.has_key?(key) 
+			api_users[key] += 1
+		else
+			api_users[key] = 1
+		end
+		if api_users[key] > 5
+			erb :go_away
+		else
+			athletes_list = db.execute("select * from athletes;")
+			content_type :json
+			athletes_list.to_json
+		end
+	end
 end
 
 get '/api/athletes/:id' do
