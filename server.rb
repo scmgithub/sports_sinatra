@@ -17,7 +17,7 @@ get '/' do
 end
 
 get '/athletes' do 
-	athletes_list = db.execute("select * from athletes")
+	athletes_list = db.execute("select * from athletes;")
 	erb :athletes, locals: { athletes: athletes_list }
 end
 
@@ -27,3 +27,7 @@ get '/athletes/:id' do
 	erb :show, locals: {athlete: one_athlete[0]}
 end
 
+post '/athletes' do 
+	db.execute("insert into athletes (name, sport) values (?, ?);", params[:new_athlete], params[:new_sport])
+	redirect('/athletes')
+end

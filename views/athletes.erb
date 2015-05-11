@@ -11,6 +11,10 @@
 			<% athletes.each { |athlete| %> <li><a href="athletes/<%= athlete[0] %>"><%= athlete[1] %></a></li> <% } %>
 		</ol>
 	<% end %>
-
+	<form action="/athletes" method="POST">
+		<input type="text" name="new_athlete" placeholder="name" required><br><br>
+		<input type="text" name="new_sport" placeholder="sport" required><br><br>
+		<button>Add a Hall-of-Famer</button>
+	</form>
 </body>
 </html>
