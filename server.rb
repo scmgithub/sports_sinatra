@@ -40,5 +40,15 @@ put '/athletes/:id' do
 	redirect("/athletes")
 end
 
+delete '/athletes/:id' do 
+	id = params[:id].to_i
+	db.execute("delete from athletes where id = ?;", id)
+	redirect('/athletes')
+end
+
+
+
+
+
 
 
