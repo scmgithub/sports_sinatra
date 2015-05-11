@@ -52,6 +52,14 @@ get '/api/athletes' do
 	athletes_list.to_json
 end
 
+get '/api/athletes/:id' do
+	id = params[:id].to_i
+	one_athlete = db.execute("select * from athletes where id = ?;", id)
+	content_type :json
+	one_athlete[0].to_json
+end
+
+
 
 
 
