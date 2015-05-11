@@ -3,6 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Athletes</title>
+	<style>
+	form {
+		margin-left: 20px;
+		padding: 10px;
+	}
+	button {
+		background-color: yellow;
+		border-radius: 8px;
+	}
+	</style>
 </head>
 <body>
 	<h1>Athletes of the World</h1>
@@ -12,9 +22,10 @@
 		</ol>
 	<% end %>
 	<form action="/athletes" method="POST">
-		<input type="text" name="new_athlete" placeholder="name" required><br><br>
+		<label>New Athlete:</label><br>
+		<input type="text" name="new_athlete" placeholder="name" required><br>
 		<input type="text" name="new_sport" placeholder="sport" required><br><br>
-		<button>Add a Hall-of-Famer</button>
+		<button style="color: green">Add a Hall-of-Famer</button>
 	</form>
 </body>
 </html>

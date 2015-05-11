@@ -49,7 +49,7 @@ end
 
 get '/api/athletes' do
 	key = params[:api_key]
-
+puts api_users
 	if !key 
 		erb :go_away
 	else
@@ -69,10 +69,25 @@ get '/api/athletes' do
 end
 
 get '/api/athletes/:id' do
+	key = params[:api_key]
 	id = params[:id].to_i
-	one_athlete = db.execute("select * from athletes where id = ?;", id)
-	content_type :json
-	one_athlete[0].to_json
+puts api_users
+	if !key 
+		erb :go_away
+	else
+		if api_users.has_key?(key) 
+			api_users[key] += 1
+		else
+			api_users[key] = 1
+		end
+		if api_users[key] > 5
+			erb :go_away
+		else
+			one_athlete = db.execute("select * from athletes where id = ?;", id)
+			content_type :json
+			one_athlete[0].to_json
+		end
+	end
 end
 
 
